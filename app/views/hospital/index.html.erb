@@ -1,20 +1,5 @@
 <h1>heeeey<h1>
 
-<% @patients.each do |patient| %>
-	<%= link_to patient.first_name, patient_path(patient) %>
-	<br>
-	<%= patient.last_name %>
-	<br>
-	<%= patient.date_of_birth %>
-	<br>
-	<%= patient.description %>
-	<br>
-	<%= patient.gender %>
-	<br>
-	<%= patient.blood_type %>
-	<br>
-	<%= link_to "Edit", edit_patient_path(patient) %>
-	<br>
-	<br>
-<% end %>
-	<%= link_to	"Add Patient", new_patient_path %>
+	<%= link_to "Add Clinic", new_clinic_path %>
+	<%= link_to "Clinics", clinics_path %>
+	

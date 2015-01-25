@@ -1,0 +1,13 @@
+	<h1>Meds</h1>
+
+	<% @medications.each do |f| %>
+		<%= f.name %>
+		<%= f.dosage %>
+		<%= f.directions %>
+		<%= f.prescriber %>
+
+	<%= link_to "View Meds", clinic_patient_medication_path(@clinic, @patient, f) %>
+	<%end%>
+
+	<%= link_to "Add Medications", new_clinic_patient_medication_path(@clinic, @patient) %>
+

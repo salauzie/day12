@@ -1,0 +1,17 @@
+<%= @clinic.name %>
+<br>
+<%= @clinic.facility_type %>
+<br>
+<%= @clinic.address %>
+<br>
+
+<%= @clinic.city %>
+<br>
+
+<%= @clinic.state %>
+<br>
+<br>
+
+<%= link_to "Home", root_path %>
+<%= link_to "Clinics", clinics_path %>
+<%= link_to "Patients", clinic_patients_path(@clinic) %>

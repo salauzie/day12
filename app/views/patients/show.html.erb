@@ -17,3 +17,6 @@
 
 <br>
 <%= link_to "Home", root_path %>
+	<%= link_to "Edit Patient", edit_clinic_patient_path(@clinic, @patient) %>
+	<%= link_to "Delete Patient", clinic_patient_path(@clinic, @patient), method: :delete %>
+<%= link_to "Meds", clinic_patient_medications_path(@clinic, @patient) %>
