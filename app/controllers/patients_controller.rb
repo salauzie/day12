@@ -1,12 +1,12 @@
 class PatientsController < ApplicationController
 	def index
 		@clinic = Clinic.find params[:clinic_id]
-		@patients = @clinic.patients
+		@patients = Patient.all
 	end
 
 	def new
 		@clinic = Clinic.find params[:clinic_id]
-		@patient = @clinic.patients.new
+		@patient = Patient.new
 	end
 
 	def create

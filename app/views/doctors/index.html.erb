@@ -1,0 +1,16 @@
+Doctors
+<% @doctors.each do |doctor| %>
+	<%= doctor.name %>
+	<br>
+	<%= doctor.office_phone_number %>
+	<br>
+	<%= doctor.specialty %>
+
+	<%= link_to "Edit", edit_doctor_path(doctor) %>
+	<%= link_to "Delete", doctor_path(doctor), method: :delete %>
+	<br>
+	<br>
+<% end %>
+
+<%= link_to "Home", root_path %>
+<%= link_to "Add Doctor", new_doctor_path %>

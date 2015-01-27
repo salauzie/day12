@@ -1,22 +1,37 @@
 class MedicationsController < ApplicationController
 
 def index
-	@clinic = Clinic.find params[:clinic_id]
-	@patient = @clinic.patients.find params[:patient_id]
-	@medications = @patient.medications
+	@medications = Medication.all
 end
 
-# def new
-# 	@clinic = Clinic.find params[:clinic_id]
-# 	@patient = @clinic.patients.find params[:patient_id]
-# 	@medication = @patient.medications.new
-# end
+def new
+	@medication = Medication.new
+end	
 
-# def create
-# 	@clinic = Clinic.find params[:clinic_id]
-# 	@patient = @clinic.patients.find params[:patient_id]
-# 	@medication = @patient.medications.create medication_params.merge({clinic_id: @clinic.id})	
-# end
+def edit
+	@medication = Medication.find params[:id]
+end	
+
+def show
+	@medication = Medication.find params[:id]
+end
+
+def create
+	@medication = Medication.create medication_params
+	redirect_to medications_path
+end
+
+def update
+	@medication = Medication.find params[:id]
+	@medication.update_attributes medication_params
+	redirect_to medications_path
+end
+
+def destroy
+	@medication = Medication.find params[:id]
+	@medication.delete
+	redirect_to medications_path
+end
 
 private
 	def medication_params

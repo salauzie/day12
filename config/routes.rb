@@ -6,10 +6,10 @@ Rails.application.routes.draw do
   root 'hospital#index'
 
   resources :clinics do
-    resources :patients do
-      resources :medications
-    end
+    resources :patients
   end
+  resources :medications
+  resources :doctors
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -2,12 +2,19 @@
 
 	<% @medications.each do |f| %>
 		<%= f.name %>
+		<br>
 		<%= f.dosage %>
+		<br>
 		<%= f.directions %>
+		<br>
 		<%= f.prescriber %>
-
-	<%= link_to "View Meds", clinic_patient_medication_path(@clinic, @patient, f) %>
+		<br>
+		<%= link_to "Edit", edit_medication_path(f) %>
+		<%= link_to "Delete", medication_path(f), method: :delete %>
+		<br>
+		<br>
 	<%end%>
 
-	<%= link_to "Add Medications", new_clinic_patient_medication_path(@clinic, @patient) %>
+	<%= link_to "Home", root_path %>
+	<%= link_to "Add Medications", new_medication_path %>
 
