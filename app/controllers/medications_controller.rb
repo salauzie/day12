@@ -39,7 +39,8 @@ private
 			:name,
 			:dosage,
 			:directions,
-			:prescriber
+			:prescriber,
+			patient_ids: []
 			)
 	end
 end

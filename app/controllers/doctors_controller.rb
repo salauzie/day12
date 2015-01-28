@@ -38,7 +38,9 @@ private
 		params.require(:doctor).permit(
 			:name,
 			:office_phone_number,
-			:specialty
+			:specialty,
+			doctor_ids: [],
+			clinic_ids: []
 			)
 	end
 end

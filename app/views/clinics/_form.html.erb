@@ -14,6 +14,12 @@
 	<%= f.label :state %>
 	<%= f.text_field :state %>
 	<br>
+	<% @doctors.each do |d| %>
+		<%=check_box_tag 'clinic[doctor_ids][]', d.id, @clinic.doctors.include?(d) %>
+		<%= d.name %>
+	<% end %>	
+
+	<br>
 	<br>
 	<%= f.submit %>
 	<% end %>

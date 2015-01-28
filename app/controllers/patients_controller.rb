@@ -7,6 +7,8 @@ class PatientsController < ApplicationController
 	def new
 		@clinic = Clinic.find params[:clinic_id]
 		@patient = Patient.new
+		@doctors = Doctor.all
+		@medications = Medication.all
 	end
 
 	def create
@@ -24,11 +26,14 @@ class PatientsController < ApplicationController
 	def show
 		@clinic = Clinic.find params[:clinic_id]
 		@patient = Patient.find params[:id]
+		@doctors = @patient.doctors
 	end	
 
 	def edit
 		@clinic = Clinic.find params[:clinic_id] 
 		@patient = Patient.find params[:id]
+		@doctors = @patient.doctors
+		@medications = @patient.medications
 	end	
 
 	def update
@@ -53,7 +58,10 @@ private
 			:date_of_birth,
 			:description,
 			:gender,
-			:blood_type
+			:blood_type,
+			patient_ids: [],
+			doctor_ids: [],
+			medication_ids: []
 			)
 	end	
 

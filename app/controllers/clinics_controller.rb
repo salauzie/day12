@@ -6,6 +6,7 @@ class ClinicsController < ApplicationController
 
 	def new
 		@clinic = Clinic.new
+		@doctors = Doctor.all
 	end
 
 	def create
@@ -15,10 +16,12 @@ class ClinicsController < ApplicationController
 
 	def show
 		@clinic = Clinic.find params[:id]
+		@doctors = @clinic.doctors
 	end
 
 	def edit
 		@clinic = Clinic.find params[:id]
+		@doctors = @clinic.doctors
 	end
 		
 	def update
@@ -40,7 +43,9 @@ private
 			:facility_type,
 			:address,
 			:city,
-			:state
+			:state,
+			clinic_ids: [],
+			doctor_ids: []
 			)
 	end
 end

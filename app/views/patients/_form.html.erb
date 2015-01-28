@@ -21,5 +21,11 @@
 	<%= f.select :blood_type, options_for_select(Patient::BLOOD_TYPE_OPTIONS, f.object.date_of_birth), include_blank: "--Choose option--" %>
 	<br>
 
+		<% @doctors.each do |d| %>
+		<%=check_box_tag 'patient[doctor_ids][]', d.id, @patient.doctors.include?(d) %>
+		<%= d.name %>
+	<% end %>	
+
+
 	<%= f.submit %>
 <% end %>
