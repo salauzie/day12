@@ -10,8 +10,19 @@
 
 <%= @clinic.state %>
 <br>
+<%= link_to "Edit", edit_clinic_path(@clinic) %>
+	<%= link_to "Delete", clinic_path(@clinic), method: :delete %>
+<br> 
+<br>
+<div>Affiliated Doctors</div>
+
+<% @doctors.each do |doctor| %>
+	<%= doctor.name %>
+	<br>
+<% end %>	
+<br>
 <br>
 
 <%= link_to "Home", root_path %>
 <%= link_to "Clinics", clinics_path %>
-<%= link_to "Patients", clinic_patients_path(@clinic) %>
+

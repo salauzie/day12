@@ -3,6 +3,8 @@
 <% @clinics.each do |clinic| %>
 	<%= link_to clinic.name, clinic_path(clinic) %>
 	<br>
+	<br>
+<!-- 	<br>
 	<%= clinic.facility_type %>
 	<br>
 	<%= clinic.address %>
@@ -14,7 +16,7 @@
 	<%= link_to "Edit", edit_clinic_path(clinic) %>
 	<%= link_to "Delete", clinic_path(clinic), method: :delete %>
 	<br>
-	<br>
+	<br> -->
 <% end %>
 
 <%= link_to "Home", root_path %>

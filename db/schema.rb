@@ -11,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150127195614) do
+ActiveRecord::Schema.define(version: 20150128223355) do
 
-  create_table "add_patient_id_to_medication_tables", force: :cascade do |t|
+  create_table "change_column_in_clincs_under_patient_ids", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -23,6 +23,11 @@ ActiveRecord::Schema.define(version: 20150127195614) do
     t.integer  "doctor_id",  limit: 4
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+  end
+
+  create_table "clinic_patients", force: :cascade do |t|
+    t.integer "clinic_id",  limit: 4
+    t.integer "patient_id", limit: 4
   end
 
   create_table "clinics", force: :cascade do |t|
@@ -77,7 +82,7 @@ ActiveRecord::Schema.define(version: 20150127195614) do
     t.text     "blood_type",    limit: 65535
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
-    t.string   "clinic_id",     limit: 255
+    t.integer  "clinic_id",     limit: 4
   end
 
 end

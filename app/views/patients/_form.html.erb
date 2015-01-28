@@ -1,4 +1,4 @@
-<%= form_for [@clinic, @patient] do |f| %>
+<%= form_for @patient do |f| %>
 	<%= f.label :first_name %>
 	<%= f.text_field :first_name %>
 	<br>
@@ -20,12 +20,14 @@
 	<%= f.label :blood_type %>
 	<%= f.select :blood_type, options_for_select(Patient::BLOOD_TYPE_OPTIONS, f.object.date_of_birth), include_blank: "--Choose option--" %>
 	<br>
-
-		<% @doctors.each do |d| %>
+	<% @doctors.each do |d| %>
 		<%=check_box_tag 'patient[doctor_ids][]', d.id, @patient.doctors.include?(d) %>
 		<%= d.name %>
-	<% end %>	
-
-
+	<% end %>
+	<br>
+<% @medications.each do |m| %>
+		<%=check_box_tag 'patient[medication_ids][]', m.id, @patient.medications.include?(m) %>
+		<%= m.name %>
+<% end %>		
 	<%= f.submit %>
 <% end %>

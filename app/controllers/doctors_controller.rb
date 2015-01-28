@@ -12,9 +12,9 @@ def create
 	redirect_to doctors_path
 end	
 
-# def show
-# 	@doctor = Doctor.find doctor_params[:id]
-# end
+def show
+	@doctor = Doctor.find doctor_params[:id]
+end
 
 def edit
 	@doctor = Doctor.find params[:id]
