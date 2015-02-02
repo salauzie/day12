@@ -1,4 +1,18 @@
 class PatientsController < ApplicationController
+	before_action :set_patient, only: [
+	:show,
+	:edit,
+	:update,
+	:destroy,
+	:wait_patient,
+	:check_up_patient,
+	:x_ray_patient,
+	:surgery_patient,
+	:bills_patient,
+	:leave_patient
+	]
+
+
 	def index
 
 		@patients = Patient.all
@@ -55,7 +69,48 @@ class PatientsController < ApplicationController
 		redirect_to patients_path
 	end
 
+	def wait_patient
+    # @restaurant = Restaurant.find(params[:id])  
+    @patient.wait!
+    redirect_to patients_path
+  end
+
+  def checkup_patient
+    # @restaurant = Restaurant.find(params[:id])  
+    @patient.check_up!
+    redirect_to patients_path
+  end
+
+  def xray_patient
+    # @restaurant = Restaurant.find(params[:id])  
+    @patient.x_ray!
+    redirect_to patients_path
+  end
+
+  def surgery_patient
+    # @restaurant = Restaurant.find(params[:id])  
+    @patient.surgery!
+    redirect_to patients_path
+  end
+
+  def bill_patient
+    # @restaurant = Restaurant.find(params[:id])  
+    @patient.bill!
+    redirect_to patients_path
+  end
+
+  def leave_patient
+    # @restaurant = Restaurant.find(params[:id])  
+    @patient.leave!
+    redirect_to patients_path
+  end
+
 private
+
+	def set_patient
+		@patient = Patient.find(parmas:[:id])
+	end
+		
 	def patient_params
 		params.require(:patient).permit(
 			:first_name,

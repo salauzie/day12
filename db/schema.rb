@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150128223355) do
+ActiveRecord::Schema.define(version: 20150202181941) do
 
   create_table "change_column_in_clincs_under_patient_ids", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -74,15 +74,16 @@ ActiveRecord::Schema.define(version: 20150128223355) do
   end
 
   create_table "patients", force: :cascade do |t|
-    t.text     "first_name",    limit: 65535
-    t.text     "last_name",     limit: 65535
-    t.text     "date_of_birth", limit: 65535
-    t.text     "description",   limit: 65535
-    t.text     "gender",        limit: 65535
-    t.text     "blood_type",    limit: 65535
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.integer  "clinic_id",     limit: 4
+    t.text     "first_name",     limit: 65535
+    t.text     "last_name",      limit: 65535
+    t.text     "date_of_birth",  limit: 65535
+    t.text     "description",    limit: 65535
+    t.text     "gender",         limit: 65535
+    t.text     "blood_type",     limit: 65535
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.integer  "clinic_id",      limit: 4
+    t.string   "workflow_state", limit: 255
   end
 
 end

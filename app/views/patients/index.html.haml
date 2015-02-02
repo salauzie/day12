@@ -1,0 +1,31 @@
+- @patients.each do |patient|
+  = patient.first_name
+  = patient.last_name
+  = patient.workflow_state
+  %br/
+  = link_to "View Patient", patient_path(patient)
+  %br/
+  = link_to 'Edit', edit_patient_path(patient)
+  %br/
+  = link_to 'Delete', patient, method: :delete, data: {confirm: 'Are you sure?'}
+  %br/
+  - if patient.wait?
+    = link_to "Doctor Check-up", checkup_patient_patient_path(patient), method: :patch
+    = link_to "X-Ray", xray_patient_patient_path(patient), method: :patch
+    = link_to "Surgery", surgery_patient_patient_path(patient), method: :patch
+    = link_to "Leaving", leave_patient_patient_path(patient), method: :patch
+  - if patient.check_up?
+    = link_to "X-Ray", xray_patient_patient_path(patient), method: :patch  
+    = link_to "Surgery", surgery_patient_patient_path(patient), method: :patch
+    = link_to "Billing", bills_patient_patient_path(patient), method: :patch
+    = link_to "Leaving", leave_patient_patient_path(patient), method: :patch
+  - if patient.x_ray?
+    = link_to "Surgery", surgery_patient_patient_path(patient), method: :patch
+    = link_to "Billing", bills_patient_patient_path(patient), method: :patch
+    = link_to "Leaving", leave_patient_patient_path(patient), method: :patch
+  - if patient.surgery?
+    = link_to "Billing", bills_patient_patient_path(patient), method: :patch    
+
+= link_to "Add Patient", new_patient_path
+= link_to "Home", root_path
+= link_to "Clinics", clinics_path

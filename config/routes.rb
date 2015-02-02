@@ -6,8 +6,22 @@ Rails.application.routes.draw do
   root 'hospital#index'
 
   resources :clinics
-  resources :patients
- 
+  resources :patients do
+    # member - require id's
+    # collection - do not require id's
+
+    member do
+      # /restaurants/:id/create_comment POST
+      # create_comment_restaurant_path(@restaurant)
+
+      patch :wait_patient
+      patch :checkup_patient
+      patch :xray_patient
+      patch :surgery_patient
+      patch :bills_patient
+      patch :leave_patient
+    end
+  end   
   resources :medications
   resources :doctors
 
