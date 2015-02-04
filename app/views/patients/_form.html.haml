@@ -1,6 +1,6 @@
 = form_for @patient do |f|
   = f.label :first_name
-  = f.text_field :first_name
+  = f.text_field :first_name, class: "form-control"
   %br/
   = f.label :last_name
   = f.text_field :last_name
@@ -27,4 +27,4 @@
   - @medications.each do |m|
     = check_box_tag 'patient[medication_ids][]', m.id, @patient.medications.include?(m)
     = m.name
-  = f.submit
+  = f.submit "Submit", class: "button", disabled: "disabled"

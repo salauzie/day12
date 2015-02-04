@@ -113,7 +113,7 @@ class PatientsController < ApplicationController
 private
 
 	def set_patient
-		@patient = Patient.find(parmas:[:id])
+		@patient = Patient.find(params[:id])
 	end
 	
 	def patient_params
