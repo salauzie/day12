@@ -21,7 +21,7 @@ Rails.application.routes.draw do
       patch :bills_patient
       patch :leave_patient
     end
-  end   
+  end  
   resources :medications
   resources :doctors
 

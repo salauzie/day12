@@ -1,5 +1,5 @@
 class PatientsController < ApplicationController
-	before_action :set_patient, only: [
+ 	before_action :set_patient, only: [
 	:show,
 	:edit,
 	:update,
@@ -12,10 +12,15 @@ class PatientsController < ApplicationController
 	:leave_patient
 	]
 
-
 	def index
-
 		@patients = Patient.all
+		@patients = if !params[:q].blank?
+      Patient.where("name LIKE ?", "%#{params[:q]}%")
+    else
+      
+      puts "Showing all Patients"
+      Patient.all
+    end.shuffle
 	end
 
 	def new
@@ -110,7 +115,7 @@ private
 	def set_patient
 		@patient = Patient.find(parmas:[:id])
 	end
-		
+	
 	def patient_params
 		params.require(:patient).permit(
 			:first_name,

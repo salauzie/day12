@@ -1,7 +1,15 @@
 class ClinicsController < ApplicationController
 
 	def index
+		# @clinics = Clinic.search(params[:search])
 		@clinics = Clinic.all
+		@clinics = if !params[:q].blank?
+      Clinic.where("name LIKE ?", "%#{params[:q]}%")
+    else
+      
+      puts "Showing all Clinics"
+      Clinic.all
+    end.shuffle
 	end
 
 	def new
@@ -16,7 +24,8 @@ class ClinicsController < ApplicationController
 	end
 
 	def show
-		@clinic = Clinic.find params[:id]
+		# @patients = @clinic.patients
+		# @clinic = Clinic.find params[:id]
 		@doctors = @clinic.doctors
 		@patients = @clinic.patients
 	end

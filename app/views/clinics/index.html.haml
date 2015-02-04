@@ -1,21 +1,12 @@
 %h1 Clinics
+= form_tag clinics_path, method: :get, role: "search" do
+  = text_field_tag 'q', params[:q], id: "srch-term", placeholder: "Search" 
+  = submit_tag "Search"
+
 - @clinics.each do |clinic|
   = link_to clinic.name, clinic_path(clinic)
   %br/
   %br/
-  /
-    <br>
-    <haml_loud> clinic.facility_type </haml_loud>
-    <br>
-    <haml_loud> clinic.address </haml_loud>
-    <br>
-    <haml_loud> clinic.city </haml_loud>
-    <br>
-    <haml_loud> clinic.state </haml_loud>
-    <br>
-    <haml_loud> link_to &quot;Edit&quot;, edit_clinic_path(clinic) </haml_loud>
-    <haml_loud> link_to &quot;Delete&quot;, clinic_path(clinic), method: :delete </haml_loud>
-    <br>
-    <br>
+ 
 = link_to "Home", root_path
 = link_to "Add Clinic", new_clinic_path
